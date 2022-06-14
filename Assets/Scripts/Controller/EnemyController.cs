@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
 
     private float speed;
 
-    private GameObject attackTarget;
+    protected GameObject attackTarget;
 
     public float loookAtTime;
 
@@ -202,7 +202,7 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
                 break;
             case EnemyStates.DEAD:
                 collider.enabled = false;
-                agent.enabled = false;
+                agent.radius = 0;
                 Destroy(gameObject, 2f);
                 break;
         }
@@ -210,15 +210,35 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
     void Attack()
     {
         transform.LookAt(attackTarget.transform);
-        if (TargetInAttackRange())
+        //判断哪种攻击距离更远以确定先进行哪种攻击的判断
+        if(characterStats.attackData.attackRange<characterStats.attackData.skillRange)
+        {
+            if (TargetInSkillRange()&&!TargetInAttackRange())
+            {
+                //技能攻击
+                anim.SetTrigger("Skill");
+            }
+            if (TargetInAttackRange())
         {
             //近战攻击
             anim.SetTrigger("Attack");
         }
-        if (TargetInSkillRange())
+         
+        }
+        else if (characterStats.attackData.attackRange > characterStats.attackData.skillRange)
         {
-            //技能攻击
-            anim.SetTrigger("Skill");
+            
+           
+            if (TargetInAttackRange()&&!TargetInSkillRange())
+            {
+                //近战攻击
+                anim.SetTrigger("Attack");
+            }
+            if (TargetInSkillRange())
+            {
+                //技能攻击
+                anim.SetTrigger("Skill");
+            }
         }
     }
     bool FoundPlayer()
