@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public enum EnemyStates {GRAUD,PATROL,CHASE,DEAD }
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(CharacterStats))]
 public class EnemyController : MonoBehaviour,IEndGameObserver
 {
     private NavMeshAgent agent;
@@ -16,7 +17,7 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
 
     private CharacterStats characterStats;
 
-    private Collider collider;
+    private  Collider collider;
 
     [Header("Basic Setting")]
     public float sightRadius;
@@ -73,14 +74,17 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
             enemyStates = EnemyStates.PATROL;
 
         }
-    }
-    
-    void OnEnable()
-    {
+        //TODO:场景切换时删去
         GameManager.Instance.AddObsever(this);
     }
+    //TODO:场景切换时启用
+    /*void OnEnable()
+    {
+        GameManager.Instance.AddObsever(this);
+    }*/
     void OnDisable()
     {
+        if (!GameManager.IsInitialized) return;
         GameManager.Instance.RemoveObsever(this);
     }
     private void Update()
