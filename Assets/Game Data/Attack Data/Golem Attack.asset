@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0919c5b42fb2bf54a974c0b124f8d950, type: 3}
-  m_Name: Grunt Base Data
+  m_Name: Golem Attack
   m_EditorClassIdentifier: 
-  attackRange: 2
-  skillRange: 1.6
-  coolDown: 1.5
+  attackRange: 3.5
+  skillRange: 0
+  coolDown: 3.5
   minDamge: 10
   maxDamge: 15
   criticalMultiplier: 2

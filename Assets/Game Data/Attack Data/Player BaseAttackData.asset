@@ -15,7 +15,7 @@ MonoBehaviour:
   attackRange: 1.5
   skillRange: 0
   coolDown: 0.7
-  minDamge: 4
-  maxDamge: 6
+  minDamge: 10
+  maxDamge: 15
   criticalMultiplier: 2
   criticalChance: 0.2

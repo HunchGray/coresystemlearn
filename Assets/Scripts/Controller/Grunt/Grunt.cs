@@ -14,9 +14,9 @@ public class Grunt : EnemyController
             transform.LookAt(attackTarget.transform);
             Vector3 direction = attackTarget.transform.position - transform.position;
             direction.Normalize();
-            attackTarget.GetComponent<NavMeshAgent>().isStopped = true;
+            //attackTarget.GetComponent<NavMeshAgent>().isStopped = true;
             attackTarget.GetComponent<NavMeshAgent>().velocity=direction*kickForce;
-            attackTarget.GetComponent<Animator>().SetTrigger("Dizzy");
+            //attackTarget.GetComponent<Animator>().SetTrigger("Dizzy");
         }
     }
 }

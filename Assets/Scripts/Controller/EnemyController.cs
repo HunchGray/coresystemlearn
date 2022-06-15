@@ -10,12 +10,12 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
 {
     private NavMeshAgent agent;
 
-    private EnemyStates enemyStates;
+    protected EnemyStates enemyStates;
 
 
     public Animator anim;
 
-    private CharacterStats characterStats;
+    protected CharacterStats characterStats;
 
     private  Collider collider;
 
@@ -288,7 +288,7 @@ public class EnemyController : MonoBehaviour,IEndGameObserver
     //Animation Event
     void Hit()
     {
-        if (attackTarget!=null)
+        if (attackTarget!=null&&transform.IsFacingTarget(attackTarget.transform ))
         { 
         var targetStats = attackTarget.GetComponent<CharacterStats>();
         targetStats.TakeDamage(characterStats, targetStats);
