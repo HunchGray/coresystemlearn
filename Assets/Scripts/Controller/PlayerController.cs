@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private GameObject attackTarget;//µÐÈË
     private float lastAttackTime;
     private bool isDead;
+    private float stopDistance;
 
     private void Awake()
     {
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
         MouseManager.Instance.OnMouseClicked += MoveToTarget;
         MouseManager.Instance.OnEnemyClicked += EventAttack;    
         
-        GameManager.Instance.RigisterPlayer(characterStats); 
+        GameManager.Instance.RigisterPlayer(characterStats);
+        stopDistance = agent.stoppingDistance;
     }
 
 
@@ -47,9 +49,10 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Death", isDead);
     }
     private void MoveToTarget(Vector3 target)
-    {
+    {    
         StopAllCoroutines();
         if (isDead) return;
+        agent.stoppingDistance = stopDistance;
         agent.isStopped = false;
         agent.destination = target;
     }
@@ -66,7 +69,7 @@ public class PlayerController : MonoBehaviour
     IEnumerator MoveToAttackTarget()
     {
         agent.isStopped = false;
-
+        agent.stoppingDistance = characterStats.attackData.attackRange;
         transform.LookAt(attackTarget.transform);
         
         while(Vector3.Distance(attackTarget.transform.position,transform.position)>characterStats.attackData.attackRange)
@@ -86,7 +89,18 @@ public class PlayerController : MonoBehaviour
     //Animation Event
     void Hit()
     {
+        if (attackTarget.CompareTag("Attackable"))
+        {
+            if (attackTarget.GetComponent<Rock>()&& attackTarget.GetComponent<Rock>().rockStates==Rock.RockStates.HitNothing)
+                attackTarget.GetComponent<Rock>().rockStates = Rock.RockStates.HitEnemy;
+            attackTarget.GetComponent<Rigidbody>().velocity=Vector3.one;
+            attackTarget.GetComponent<Rigidbody>().AddForce(transform.forward * 20, ForceMode.Impulse);
+        }
+        else
+        {
         var targetStats = attackTarget.GetComponent<CharacterStats>();
         targetStats.TakeDamage(characterStats, targetStats);
+        }
+
     }
 }

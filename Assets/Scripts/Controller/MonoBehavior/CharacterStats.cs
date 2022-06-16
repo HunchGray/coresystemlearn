@@ -83,11 +83,16 @@ public class CharacterStats : MonoBehaviour
     {
         int damage = Mathf.Max(attacker.CurrentDamage() - defener.currentDefence,0);
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        if (isCritical)
+        if (attacker.isCritical)
         {
             defener.GetComponent<Animator>().SetTrigger("Hit");
         }
 
+    }
+    public void TakeDamage(int damage,CharacterStats defener)
+    {
+        int currentDamage = Mathf.Max(damage - defener.currentDefence, 0);
+        currentHealth = Mathf.Max(currentHealth - currentDamage, 0);
     }
 
     private int CurrentDamage()
