@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5686874274202907093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159594657349901121}
+  m_Layer: 7
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &159594657349901121
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5686874274202907093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.73, y: 2.61, z: 0.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8242910033707116610}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8242910032738399953
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8242910033707116610}
   - component: {fileID: 8242910033707116609}
+  - component: {fileID: 2338322979988952449}
   - component: {fileID: 6773555120848273128}
   - component: {fileID: 3543092228816126654}
   - component: {fileID: 3221296730160990732}
@@ -383,6 +414,7 @@ Transform:
   m_Children:
   - {fileID: 8242910033927446039}
   - {fileID: 8242910033502977847}
+  - {fileID: 159594657349901121}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 174.814, z: 0}
@@ -405,6 +437,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2338322979988952449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242910033707116608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8996bdedfb678254781bc43277e710ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 2437546111058496359, guid: bf7e08e750bc8b745894cc114342d95c, type: 3}
+  barPoint: {fileID: 159594657349901121}
+  alwaysVisible: 0
+  visibleTime: 0
 --- !u!195 &6773555120848273128
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -461,6 +509,8 @@ MonoBehaviour:
   loookAtTime: 4
   PatrolRange: 10
   kickForce: 30
+  rockPrefab: {fileID: 0}
+  handPos: {fileID: 0}
 --- !u!65 &8242910034781703994
 BoxCollider:
   m_ObjectHideFlags: 0

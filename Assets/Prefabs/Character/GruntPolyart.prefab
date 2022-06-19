@@ -315,6 +315,7 @@ GameObject:
   m_Component:
   - component: {fileID: 734684155237444451}
   - component: {fileID: 734684155237443740}
+  - component: {fileID: 6839483684199040860}
   - component: {fileID: 701922185947561967}
   - component: {fileID: 3573311390304514435}
   - component: {fileID: 2753517195571893281}
@@ -339,6 +340,7 @@ Transform:
   m_Children:
   - {fileID: 734684155276190489}
   - {fileID: 734684155626730628}
+  - {fileID: 6615419342059046313}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -361,6 +363,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6839483684199040860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734684155237443741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8996bdedfb678254781bc43277e710ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthUIPrefab: {fileID: 2437546111058496359, guid: bf7e08e750bc8b745894cc114342d95c, type: 3}
+  barPoint: {fileID: 6615419342059046313}
+  alwaysVisible: 0
+  visibleTime: 0
 --- !u!195 &701922185947561967
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -942,4 +960,34 @@ Transform:
   - {fileID: 734684154993137313}
   m_Father: {fileID: 734684155511051169}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6970314256682864655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6615419342059046313}
+  m_Layer: 7
+  m_Name: HealthBarPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6615419342059046313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6970314256682864655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.013, y: 2.457, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734684155237444451}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
