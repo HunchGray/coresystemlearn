@@ -20,7 +20,9 @@ public class Rock : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.one;
         rockStates = RockStates.HitPlayer;
-        FlyToTarget();
+        FlyToTarget();//中文飞向目标
+        
+
 
 
     }
